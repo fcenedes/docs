@@ -34725,6 +34725,22 @@
             "description": ""
           }
         }
+      ],
+      "redis_rb": [
+        {
+          "signature": "debug(*args)",
+          "params": [
+            {
+              "name": "*args",
+              "type": "Array",
+              "description": "the subcommand, then its arguments"
+            }
+          ],
+          "returns": {
+            "type": "Object",
+            "description": "depends on the subcommand, a String for OBJECT and SLEEP"
+          }
+        }
       ]
     }
   },
@@ -37706,6 +37722,22 @@
             "description": "Script execution result"
           }
         }
+      ],
+      "redis_rb": [
+        {
+          "signature": "eval(*args)",
+          "params": [
+            {
+              "name": "*args",
+              "type": "Array",
+              "description": "the script String, then optional keys and argv arrays, or a Hash with :keys and :argv"
+            }
+          ],
+          "returns": {
+            "type": "Object",
+            "description": "depends on the script"
+          }
+        }
       ]
     }
   },
@@ -38229,6 +38261,22 @@
           "returns": {
             "type": "mixed",
             "description": "Script execution result"
+          }
+        }
+      ],
+      "redis_rb": [
+        {
+          "signature": "evalsha(*args)",
+          "params": [
+            {
+              "name": "*args",
+              "type": "Array",
+              "description": "the SHA1 String of a loaded script, then optional keys and argv arrays, or a Hash with :keys and :argv"
+            }
+          ],
+          "returns": {
+            "type": "Object",
+            "description": "depends on the script"
           }
         }
       ]
@@ -99250,6 +99298,22 @@
             "description": "A new connection in monitor mode, so the current connection is not disturbed"
           }
         }
+      ],
+      "redis_rb": [
+        {
+          "signature": "monitor",
+          "params": [
+            {
+              "name": "&block",
+              "type": "Block",
+              "description": "called for every line of output, with the timestamp and command as a String"
+            }
+          ],
+          "returns": {
+            "type": "nil",
+            "description": "does not return, there is no way to interrupt it"
+          }
+        }
       ]
     }
   },
@@ -105274,6 +105338,22 @@
             "description": "List of active channels matching the pattern"
           }
         }
+      ],
+      "redis_rb": [
+        {
+          "signature": "pubsub(:channels, *args)",
+          "params": [
+            {
+              "name": "*args",
+              "type": "Array",
+              "description": "an optional glob-style pattern to match channel names"
+            }
+          ],
+          "returns": {
+            "type": "Array<String>",
+            "description": "the active channels"
+          }
+        }
       ]
     }
   },
@@ -105330,6 +105410,16 @@
           "returns": {
             "type": "mixed",
             "description": ""
+          }
+        }
+      ],
+      "redis_rb": [
+        {
+          "signature": "pubsub(:help)",
+          "params": [],
+          "returns": {
+            "type": "Array<String>",
+            "description": "lines of help text"
           }
         }
       ]
@@ -105493,6 +105583,16 @@
           "returns": {
             "type": "mixed",
             "description": "Number of unique pattern subscriptions"
+          }
+        }
+      ],
+      "redis_rb": [
+        {
+          "signature": "pubsub(:numpat)",
+          "params": [],
+          "returns": {
+            "type": "Integer",
+            "description": "the number of pattern subscriptions"
           }
         }
       ]
@@ -105751,6 +105851,22 @@
             "description": "Map of channel names to subscriber counts"
           }
         }
+      ],
+      "redis_rb": [
+        {
+          "signature": "pubsub(:numsub, *args)",
+          "params": [
+            {
+              "name": "*args",
+              "type": "Array",
+              "description": "the channel names"
+            }
+          ],
+          "returns": {
+            "type": "Array",
+            "description": "each channel name followed by its number of subscribers"
+          }
+        }
       ]
     }
   },
@@ -105980,6 +106096,22 @@
             "description": "List of active shard channels matching the pattern"
           }
         }
+      ],
+      "redis_rb": [
+        {
+          "signature": "pubsub(:shardchannels, *args)",
+          "params": [
+            {
+              "name": "*args",
+              "type": "Array",
+              "description": "an optional glob-style pattern to match shard channel names"
+            }
+          ],
+          "returns": {
+            "type": "Array<String>",
+            "description": "the active shard channels"
+          }
+        }
       ]
     }
   },
@@ -106194,6 +106326,22 @@
           "returns": {
             "type": "mixed",
             "description": "Map of shard channel names to subscriber counts"
+          }
+        }
+      ],
+      "redis_rb": [
+        {
+          "signature": "pubsub(:shardnumsub, *args)",
+          "params": [
+            {
+              "name": "*args",
+              "type": "Array",
+              "description": "the shard channel names"
+            }
+          ],
+          "returns": {
+            "type": "Array",
+            "description": "each shard channel name followed by its number of subscribers"
           }
         }
       ]
@@ -117561,6 +117709,16 @@
             "description": ""
           }
         }
+      ],
+      "redis_rb": [
+        {
+          "signature": "shutdown",
+          "params": [],
+          "returns": {
+            "type": "nil",
+            "description": "the server closes the connection, so there is no reply"
+          }
+        }
       ]
     }
   },
@@ -119560,6 +119718,27 @@
             "description": ""
           }
         }
+      ],
+      "redis_rb": [
+        {
+          "signature": "slaveof(host, port)",
+          "params": [
+            {
+              "name": "host",
+              "type": "String",
+              "description": "the host of the master, or NO to promote the server to master"
+            },
+            {
+              "name": "port",
+              "type": "Integer",
+              "description": "the port of the master, or ONE when host is NO"
+            }
+          ],
+          "returns": {
+            "type": "String",
+            "description": "OK"
+          }
+        }
       ]
     }
   },
@@ -119884,6 +120063,16 @@
           "returns": {
             "type": "Result<unknown, Context>",
             "description": ""
+          }
+        }
+      ],
+      "redis_rb": [
+        {
+          "signature": "slowlog(:help)",
+          "params": [],
+          "returns": {
+            "type": "Array<String>",
+            "description": "lines of help text"
           }
         }
       ]
@@ -127969,6 +128158,16 @@
           "returns": {
             "type": "Result<unknown, Context>",
             "description": ""
+          }
+        }
+      ],
+      "redis_rb": [
+        {
+          "signature": "sync",
+          "params": [],
+          "returns": {
+            "type": "Object",
+            "description": "internal replication command, the server then streams the dataset and later writes on this connection"
           }
         }
       ]
@@ -149968,6 +150167,32 @@
           "returns": {
             "type": "int",
             "description": ""
+          }
+        }
+      ],
+      "redis_rb": [
+        {
+          "signature": "xgroup(:createconsumer, key, group, consumer)",
+          "params": [
+            {
+              "name": "key",
+              "type": "String",
+              "description": "the stream key"
+            },
+            {
+              "name": "group",
+              "type": "String",
+              "description": "the consumer group name"
+            },
+            {
+              "name": "consumer",
+              "type": "String",
+              "description": "the consumer name"
+            }
+          ],
+          "returns": {
+            "type": "Integer",
+            "description": "1 when the consumer was created, 0 when it already existed"
           }
         }
       ]
